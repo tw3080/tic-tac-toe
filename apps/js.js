@@ -1,6 +1,11 @@
+/*
+TODO: change jQuery fades to CSS transitons
+*/
+
 // Variables
 var turn = 'x';
 var winner = null;
+var numTurns = 1;
 
 // Sets player 1 to 'x' and adds game description message
 function startGame() {
@@ -13,19 +18,25 @@ function setMessage(msg) {
   $('#description').hide().html(msg).fadeIn();
 }
 
-// Switches players every other turn
+// Switches players every other turn, or declares winner/no winner
 function switchTurn() {
   $('h1').removeClass('initialHeading').addClass('defaultHeading');
+  console.log(numTurns);
   if (checkWinner(turn)) {
     setMessage(turn + ' won!');
     addButton();
     winner = turn;
+  } else if (numTurns == 9) {
+    setMessage('No winner!');
+    addButton();
   } else if (turn == 'x') {
     turn = 'o';
+    numTurns++;
     setMessage(turn + "'s turn");
   } else {
     turn = 'x';
     setMessage(turn + "'s turn");
+    numTurns++;
   }
 }
 
@@ -41,8 +52,8 @@ function checkWinner(move) {
       checkSquare(1, 5, 9, move) ||
       checkSquare(3, 5, 7, move)) {
         result = true;
-      }
-      return result;
+  }
+  return result;
 }
 
 // Checks for matching squares
@@ -59,6 +70,7 @@ function getSquare(num) {
   return square;
 }
 
+// Adds 'new game' button
 function addButton() {
   $('.button').hide().fadeIn();
   $('.button').html('<button id="new-game">New Game?</button>');
@@ -73,6 +85,7 @@ function clearSquares(num) {
 function newGame() {
   turn = 'x';
   winner = null;
+  numTurns = 1;
   for (var i = 1; i <= 9; i++) {
     clearSquares(i);
   }
