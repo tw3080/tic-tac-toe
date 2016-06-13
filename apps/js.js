@@ -1,7 +1,3 @@
-/*
-TODO: change jQuery fades to CSS transitons
-*/
-
 // Variables
 var turn = 'x';
 var winner = null;
@@ -21,7 +17,6 @@ function setMessage(msg) {
 // Switches players every other turn, or declares winner/no winner
 function switchTurn() {
   $('h1').removeClass('initialHeading').addClass('defaultHeading');
-  console.log(numTurns);
   if (checkWinner(turn)) {
     setMessage(turn + ' won!');
     addButton();
