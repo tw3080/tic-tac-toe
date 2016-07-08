@@ -67,8 +67,8 @@ function getSquare(num) {
 
 // Adds 'new game' button
 function addButton() {
-  $('.button').hide().fadeIn();
-  $('.button').html('<button id="new-game">New Game?</button>');
+  $('#button').hide().fadeIn();
+  $('#button').html('<button id="new-game">New Game?</button>');
 }
 
 // Clear squares
@@ -101,7 +101,7 @@ $('.col-1-3').on('click', function() {
 
 $(document).on('click', '#new-game', function() {
   newGame();
-  $('.button').fadeOut();
+  $('#button').fadeOut();
 });
 
 // Starts game on page load
