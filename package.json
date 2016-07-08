@@ -1,0 +1,28 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "Simple tic-tac-toe game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:css",
+    "watch": "npm run watch:css",
+    "build:css": "npm run clean:css && lessc --source-map less/style.less css/style.css",
+    "watch:css": "npm run build:css && chokidar less/style.less -c 'npm run build:css'",
+    "clean:css": "rm -f css/style.css css/style.css.map"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tw3080/tic-tac-toe.git"
+  },
+  "author": "Taylor Welling",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tw3080/tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/tw3080/tic-tac-toe#readme",
+  "devDependencies": {
+    "chokidar-cli": "^1.2.0",
+    "less": "^2.7.1"
+  }
+}
